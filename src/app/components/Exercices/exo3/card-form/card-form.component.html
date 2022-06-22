@@ -1,0 +1,72 @@
+<div *ngFor="let utilisateur of utilisateurs">
+    <app-user-card [email]="utilisateur.email" [entreprise]="utilisateur.entreprise" [nom]="utilisateur.nom" [prenom]="utilisateur.prenom" [telephone]="utilisateur.telephone"></app-user-card>
+</div>
+<div>
+    <form [formGroup]="utilisateur" (ngSubmit)="onSubmit()">
+        <div>
+            <div>
+                <label>
+                    Nom :
+                    <input type="text" formControlName="nom">
+                    <span *ngIf="submitted && form['nom'].hasError('minlength')">
+                        *Nom invalide
+                    </span>
+                    <span *ngIf="submitted && form['nom'].hasError('required')">
+                        *Nom ne peut être vide
+                    </span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    prenom :
+                    <input type="text" formControlName="prenom">
+                    <span *ngIf="submitted && form['prenom'].hasError('minlength')">
+                        *Prenom invalide
+                    </span>
+                    <span *ngIf="submitted && form['prenom'].hasError('required')">
+                        *Prenom ne peut être vide
+                    </span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    Email :
+                    <input type="email" formControlName="email">
+                    <span *ngIf="submitted && form['email'].hasError('email')">
+                        *Email invalide
+                    </span>
+                    <span *ngIf="submitted && form['email'].hasError('required')">
+                        *Email ne peut être vide
+                    </span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    entreprise :
+                    <input type="text" formControlName="entreprise">
+                    <span *ngIf="submitted && form['entreprise'].hasError('minlength')">
+                        *Entreprise invalide
+                    </span>
+                    <span *ngIf="submitted && form['entreprise'].hasError('required')">
+                        *Entreprise ne peut être vide
+                    </span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    telephone :
+                    <input type="number" formControlName="telephone">
+                    <span *ngIf="submitted && form['telephone'].hasError('pattern')">
+                        *Telephone invalide
+                    </span>
+                    <span *ngIf="submitted && form['telephone'].hasError('required')">
+                        *Telephone ne peut être vide
+                    </span>
+                </label>
+            </div>
+            
+        </div>
+        <button type="submit">Ajouter</button>
+    </form>
+</div>
+

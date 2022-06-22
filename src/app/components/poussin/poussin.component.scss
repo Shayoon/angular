@@ -1,0 +1,75 @@
+.background {
+    width: 620px;
+    height: 350px;
+    display: block;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.card-header {
+    background-color: #ffffff;
+    height: 100px;
+    text-align: right;
+    font-size: 40px;
+    padding: 10px;
+    font-weight: 600;
+    color: #02B4F2
+}
+
+.name {
+    font-size: 60px;
+    padding: 1px;
+    font-weight: 600;
+    color: #ffffff
+}
+
+.card {
+    height: 200px;
+    margin-top: 15px;
+    border: 3px solid white;
+    background-color: #02B4F2;
+    padding: 30px;
+    color: white;
+    text-align: left;
+    font-weight: 500;
+}
+
+.info {
+    color: white;
+    margin: 20px 0px;
+    text-align: left;
+    font-weight: 150;
+    font-size: 20px;
+}
+
+.container {
+    margin-bottom: 150px;
+}
+
+.myButton {
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    line-height: 22px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%);
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+    border: 2px solid rgb(28, 110, 164);
+    display: inline-block;
+}
+
+.myButton:hover {
+    background: #1C6EA4;
+}
+
+.myButton:active {
+    background: #144E75;
+}

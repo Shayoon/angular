@@ -1,0 +1,26 @@
+<button class="myButton" type="button" (click)="toggle()">Masquer / afficher les cartes</button>
+
+<div class="container" *ngFor="let user of users; let odd=odd">    
+    <div class="background" *ngIf="odd">
+        <div class="card-header">
+            {{user.company.name}}
+
+            <div class="card">
+                <div class="name">
+                    {{user.name}}
+                </div>
+                <div class="info">
+                    <p>
+                        Site : {{user.website}} / Id : {{user.id}}
+                    </p>
+                    <p>
+                        email : {{user.email}} // odd : {{odd}}
+                    </p>
+                    <p>
+                        Phone : {{user.phone}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
