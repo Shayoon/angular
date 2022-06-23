@@ -25,7 +25,6 @@ import { ListeCoursesComponent } from './components/liste-courses/liste-courses.
 import { ReactiveListeCoursesComponent } from './components/reactive-liste-courses/reactive-liste-courses.component';
 import { FormBuilderListeCoursesComponent } from './components/form-builder-liste-courses/form-builder-liste-courses.component';
 import { CardFormComponent } from './components/Exercices/exo3/card-form/card-form.component';
-import { UserCardComponent } from './components/Exercices/exo3/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,6 @@ import { UserCardComponent } from './components/Exercices/exo3/user-card/user-ca
     ReactiveListeCoursesComponent,
     FormBuilderListeCoursesComponent,
     CardFormComponent,
-    UserCardComponent,
   ],
   // On déclarera ici les modules à importer
   imports: [

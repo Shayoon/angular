@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import {Form, FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-card-form',
@@ -8,45 +8,55 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class CardFormComponent implements OnInit {
 
-  utilisateur: FormGroup = this.formBuilder.group({
-    nom: ['', Validators.compose([Validators.minLength(2),Validators.required])],
-    prenom: ['', Validators.compose([Validators.minLength(2),Validators.required])],
-    email: ['', Validators.compose([Validators.email, Validators.required])],
-    entreprise:  ['', Validators.compose([Validators.minLength(2),Validators.required])],
-    telephone:  ['', Validators.compose([Validators.pattern("[0-9]{9}"),Validators.required])],
-  })
 
-  utilisateurs: any[] = [];
+  users: any[] = [];
+  userForm: FormGroup = this.formBuilder.group({
+    nom: ['', [ Validators.minLength(2), Validators.required]],
+    prenom: ['', [Validators.minLength(2), Validators.required]],
+    email: ['', [Validators.email, Validators.required ]],
+    // On déclare ici un tableau de FormArray
+    // Dans lequel on ajoute un control pour un téléphone
+    telephones: this.formBuilder.array([
+      this.formBuilder.control('', [Validators.minLength(10), Validators.required]),
+    ]),
+    entreprise: ['', [Validators.minLength(2), Validators.required]],
+  });
 
   submitted: boolean = false;
 
+  constructor(private formBuilder: FormBuilder) {}
 
-  constructor(private formBuilder: FormBuilder) { 
+  ngOnInit(): void {}
 
-  }
-
-  ngOnInit(): void {
-  }
-
-  onSubmit() : boolean{
-    this.submitted = true;
-    if (this.utilisateur.invalid) {
-      return false
-    }
-    else {
-      this.addUtilisateur();
-      return true;
-    }
-  }
-
-  private addUtilisateur(){
-    this.utilisateurs.push(this.utilisateur.value);
-    this.utilisateur.reset;
+  private addUser(): void {
+    this.users.push(this.userForm.value);
+    this.userForm.reset();
     this.submitted = false;
   }
+  public onSubmit(): void {
+    this.submitted = true
+    if (this.userForm.valid) {
+      this.addUser();
+    }
+  }
+  public get form() {
+    return this.userForm.controls;
+  }
 
-  get form(){
-    return this.utilisateur.controls;
+// Getter pour accéder à la liste des téléphones
+  public get telephones(): FormArray {
+    return this.userForm.get('telephones') as FormArray;
+  }
+  // Méthode pour ajouter un control de téléphone
+  // La méthode va push un control de téléphone dans le tableau 'téléphones'
+  public addTelephone(): void {
+    this.telephones.push(this.formBuilder.control('', [Validators.minLength(10), Validators.required]));
+  }
+  // Méthode pour supprimer un control de téléphone
+  // On retire le dernier élément de l'index
+  // NB le compte commence à 1, l'index commence à 0 !
+  public removeTelephone(): void {
+    this.telephones.removeAt(this.telephones.length - 1);
   }
 
 }
